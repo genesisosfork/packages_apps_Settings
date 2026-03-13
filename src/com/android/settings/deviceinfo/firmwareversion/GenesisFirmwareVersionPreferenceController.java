@@ -33,7 +33,6 @@ public class GenesisFirmwareVersionPreferenceController extends BasePreferenceCo
 
     private static final String TAG = "GenesisFirmwareVersion";
     private static final String VERSION_PROPERTY = "ro.genesis.display.version";
-    private static final String GENESIS_BUILDTYPE = "ro.genesis.releasetype";
 
     private final PackageManager mPackageManager;
 
@@ -50,10 +49,9 @@ public class GenesisFirmwareVersionPreferenceController extends BasePreferenceCo
     @Override
     public CharSequence getSummary() {
         String getVer = SystemProperties.get(VERSION_PROPERTY);
-        String getType = SystemProperties.get(GENESIS_BUILDTYPE);
-        if (!getVer.isEmpty() && !getType.isEmpty())
-            return getVer + " | " + getType;
-        else 
+        if (!getVer.isEmpty())
+            return getVer;
+        else
             return mContext.getString(R.string.device_info_default);
     }
 
